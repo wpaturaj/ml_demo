@@ -1,0 +1,43 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+test:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/test.csv
+
+train:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/train.csv
+
+sampleSubmission:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/sampleSubmission.csv
+
+
+
+train_scd:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/train_scd.csv
+
+test_scd:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/test_scd.csv
+
+y_train:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/y_train.csv
+
+y_test:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/y_test.csv
+
+
+
+logit:
+    type: kedro_mlflow.io.artifacts.MlflowArtifactDataSet
+    data_set:
+      type: kedro_mlflow.io.models.MlflowModelSaverDataSet
+      flavor: mlflow.sklearn
+      filepath: data/06_models/logit
